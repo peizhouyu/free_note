@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-9-18 3:49:58 by Hibernate Tools 5.1.0.Beta1 -->
+<hibernate-mapping>
+    <class name="cn.free.bean.User" table="user" catalog="free_index" optimistic-lock="version">
+        <id name="id" type="java.lang.Integer">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <property name="account" type="string">
+            <column name="account" />
+        </property>
+        <property name="password" type="string">
+            <column name="password" />
+        </property>
+        <property name="mobile" type="string">
+            <column name="mobile" />
+        </property>
+        <property name="token" type="string">
+            <column name="token" />
+        </property>
+        <property name="headImg" type="string">
+            <column name="head_img" />
+        </property>
+        <property name="EMail" type="string">
+            <column name="e_mail" />
+        </property>
+        <property name="info" type="string">
+            <column name="info" />
+        </property>
+        <property name="isDel" type="string">
+            <column name="isDel" />
+        </property>
+    </class>
+</hibernate-mapping>

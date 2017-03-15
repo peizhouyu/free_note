@@ -1,0 +1,19 @@
+<!DOCTYPE struts 
+PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" 
+"http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+	<!-- 这是对外的Http接口 -->
+	<package name="HttpAPI" namespace="/HttpAPI"  extends="struts-default,json-default">
+	
+		<action name="checkAccount" class="cn.free.actionForAPI.HttpLoginAction" method="login">
+			<result type="json">
+				<param name="includeProperties">  
+                dataMap.*  
+                </param>  
+			</result>
+		</action>
+		
+		
+	</package>
+
+</struts>

@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-9-18 3:49:58 by Hibernate Tools 5.1.0.Beta1 -->
+<hibernate-mapping>
+    <class name="cn.free.bean.Note" table="note" catalog="free_index" optimistic-lock="version">
+        <id name="id" type="java.lang.Integer">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <property name="userId" type="int">
+            <column name="user_id" not-null="true" />
+        </property>
+        <property name="userName" type="string">
+            <column name="user_name" />
+        </property>
+        <property name="title" type="string">
+            <column name="title" not-null="true" />
+        </property>
+        <property name="info" type="string">
+            <column name="info" />
+        </property>
+        <property name="content" type="string">
+            <column name="content" length="65535" />
+        </property>
+        <property name="time" type="timestamp">
+            <column name="time" length="0" />
+        </property>
+    </class>
+</hibernate-mapping>

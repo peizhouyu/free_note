@@ -1,0 +1,91 @@
+<!DOCTYPE struts 
+PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" 
+"http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+
+	<constant name="struts.custom.i18n.resources" value="utf-8" />
+	
+	
+	<package name="main" namespace="/inde" extends="struts-default">
+	
+		
+		<global-results>
+			<result name="login">/inde/login.jsp</result>
+			<result name="index">/index.jsp</result>
+			<result name="404">/ErrorPage/404.jsp</result>
+			<result name="500">/ErrorPage/500.jsp</result>
+		</global-results>
+		<!-- 登录 -->
+		<action name="login" class="cn.free.action.LoginAction">
+			<result name="success">/inde/note/note_index.jsp</result>
+			<result name="input">/inde/login.jsp</result>
+			<result name="error">/ErroPage/404.jsp</result>
+		</action>
+		
+		<!-- 检查session是否存在 若存在跳过登录界面 直接登录 -->
+		<action name="checklogin" class="cn.free.action.LoginAction" method="checklogin">
+			<result name="success">/inde/note/note_index.jsp</result>
+			<result name="input">/inde/login.jsp</result>
+		</action>
+			
+		<!-- 注册 -->
+		<action name="register" class="cn.free.action.RegisterAction" >
+			<result name="success">/inde/login.jsp</result>
+			<result name="error">/inde/register.jsp</result>
+		</action>
+		
+		<!-- 注销登录 -->
+		<action name="logout" class="cn.free.action.LoginAction" method="logout">
+			<result name="input">/inde/login.jsp</result>
+		</action>
+		
+		<!-- 添加笔记 -->
+		<action name="note_add" class="cn.free.action.NoteManage" method="note_add">
+			<result name="success" type="redirect">note_getlist</result>
+			<result name="input">/inde/note/note_add.jsp</result>
+		</action>
+		
+		<!-- 查询笔记list -->
+		<action name="note_getlist" class="cn.free.action.NoteManage" method="note_getlist">
+			<result name="success" >/inde/note/note_list.jsp</result>
+		</action>
+		
+		<!-- 查询单篇文章 -->
+		<action name="note_getone" class="cn.free.action.NoteManage" method="note_getone">
+			<result name="success" >/inde/note/note_page.jsp</result>
+		</action>
+		
+		<!-- 删除笔记 -->
+		<action name="note_delete" class="cn.free.action.NoteManage" method="note_delete">
+			<result name="success" type="redirect">note_getlist</result>
+		</action>
+		
+		<!-- 修改笔记 返回修改页 -->
+		<action name="note_change" class="cn.free.action.NoteManage" method="note_change">
+			<result name="success">/inde/note/note_change.jsp</result>
+		</action>
+		<!-- 更新数据 -->
+		<action name="note_update" class="cn.free.action.NoteManage" method="note_update">
+			<result name="success" type="redirect">note_getlist</result>
+		</action>
+		
+		<!-- 个人简介 -->
+		<action name="profile" class="cn.free.action.WaitAction" method="profile">
+			<result name="success">/inde/note/profile.jsp</result>
+		</action>
+		
+	</package>
+	
+	
+	
+	<!-- 显示开发中页面 -->
+	<package name="build"  extends="struts-default">
+		<action name="building" class="cn.free.action.WaitAction" method="building">
+			<result name="building">/ErrorPage/building.jsp</result>
+		</action>
+	</package>
+
+	<!-- 引入对外接口配置文件 -->
+	<include file="strutsHttpAPI.xml"></include>
+</struts>
+	
